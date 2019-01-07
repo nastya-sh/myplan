@@ -4,8 +4,8 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
 const ProjectDetails = props => {
-  const id = props.match.params.id;
-  console.log(props);
+  // const id = props.match.params.id;
+  // console.log(props);
   const { project } = props;
   if (project) {
     return (
