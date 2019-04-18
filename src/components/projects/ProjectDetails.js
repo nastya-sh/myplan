@@ -6,8 +6,6 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 
 const ProjectDetails = props => {
-  // const id = props.match.params.id;
-  // console.log(props);
   const { project, auth } = props;
   if (!auth.uid) return <Redirect to="/signin" />;
 
@@ -16,12 +14,14 @@ const ProjectDetails = props => {
       <div className="container section project-details">
         <div className="card z-depth-0">
           <div className="card-title">{project.title}</div>
-          <p>{project.content}</p>
+          <p className="card-content">{project.content}</p>
           <div className="card-action gret lighten-4 grey-text">
-            <div>
+            <div className="card-user">
               Posted by {project.authorFirstName} {project.authorLastName}
             </div>
-            <div>{moment(project.createdAt.toDate()).calendar()}</div>
+            <div className="card-time">
+              {moment(project.createdAt.toDate()).calendar()}
+            </div>
           </div>
         </div>
       </div>
@@ -36,7 +36,6 @@ const ProjectDetails = props => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   const id = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[id] : null;

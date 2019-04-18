@@ -15,7 +15,7 @@ class CreateProject extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    // console.log(this.state);
+
     this.props.createProject(this.state);
     this.props.history.push("/");
   };
@@ -26,7 +26,9 @@ class CreateProject extends Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Create new project</h5>
+          <h5 className="grey-text text-darken-3" data-e2e="title-form">
+            Create new project
+          </h5>
           <div className="input-fieled">
             <label htmlFor="title">Title</label>
             <input type="text" id="title" onChange={this.handleChange} />
@@ -39,7 +41,7 @@ class CreateProject extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="input-field">
+          <div className="input-field" data-e2e="btn-create">
             <button className="btn pink lighten-1 z-depth-0">Create</button>
           </div>
         </form>
